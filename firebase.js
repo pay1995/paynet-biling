@@ -1,23 +1,31 @@
-// --- Firebase SDK import (Modular V9) ---
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
-import { getFirestore } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
-import { getAuth } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-auth.js";
+// --- Firebase SDK (gunakan versi modul) ---
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
+import { getDatabase, ref, set, get, child } 
+    from "https://www.gstatic.com/firebasejs/10.7.0/firebase-database.js";
 
-// --- Konfigurasi Firebase Web App kamu ---
+// --- Konfigurasi Firebase PROJECT KAKAK ---
 const firebaseConfig = {
-    apiKey: "AIzaSyCLdT_qgNPKa9JgQ1qNVYGy-flo-WYUN8",
+    apiKey: "AIzaSyCLdTI_qgNPKa9JgQ1qNVYGv-flo-WYUN8",
     authDomain: "paynet-billing.firebaseapp.com",
     projectId: "paynet-billing",
-    storageBucket: "paynet-billing.firebasestorage.app",
+    storageBucket: "paynet-billing.appspot.com",
     messagingSenderId: "1073884574562",
-    appId: "1:1073884574562:web:a702b421fabfe1679bb23b"
+    appId: "1:1073884574562:web:a702b421fabfe1679bb23b",
+    databaseURL: "https://paynet-billing-default-rtdb.firebaseio.com/"
 };
 
-// --- Initialize Firebase ---
+// --- Inisialisasi Firebase ---
 export const app = initializeApp(firebaseConfig);
+export const db = getDatabase(app);
 
-// --- Services yang bisa dipakai seluruh aplikasi ---
-export const db = getFirestore(app);   // Database Firestore
-export const auth = getAuth(app);      // Authentication
+// --- Fungsi SIMPAN ke Firebase ---
+export async function simpanData(path, data) {
+    await set(ref(db, path), data);
+    return true;
+}
 
-console.log("Firebase berhasil terhubung 👍");
+// --- Fungsi BACA dari Firebase ---
+export async function ambilData(path) {
+    const snapshot = await get(child(ref(db), path));
+    return snapshot.exists() ? snapshot.val() : null;
+}
