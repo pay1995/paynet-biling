@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>History Tagihan</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="history.js" defer></script>
+</head>
+<body>
+    <div class="page">
+        <div class="page-header">
+            <div class="page-title">📄 History Tagihan</div>
+            <a href="index.html" class="back-link">⬅ Kembali</a>
+        </div>
+
+        <section class="card">
+            <label for="filterPeriode">Filter Periode</label>
+            <!-- FIX TANGGAL: type="month" -->
+            <input id="filterPeriode" type="month" />
+
+            <button onclick="filterByMonth()" class="apply">Terapkan Filter</button>
+            <button onclick="exportPDF()" class="secondary">Export PDF History</button>
+            <button onclick="hapusSemuaHistory()" class="danger">Hapus Semua History</button>
+        </section>
+
+        <section class="card">
+            <table>
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama</th>
+                        <th>Paket</th>
+                        <th>Harga</th>
+                        <th>Periode</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="listHistory"></tbody>
+            </table>
+        </section>
+    </div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Data Pelanggan - PAY.Net Biling</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="pelanggan.js" defer></script>
+</head>
+<body>
+  <div class="page">
+    <div class="page-header">
+      <div class="page-title">📂 Data Pelanggan</div>
+      <a href="index.html" class="back-link">⬅ Kembali</a>
+    </div>
+    <section class="card">
+      <div class="form-grid">
+        <div>
+          <label for="nama">Nama</label>
+          <input id="nama" placeholder="Nama pelanggan" />
+        </div>
+        <div>
+          <label for="alamat">Alamat</label>
+          <input id="alamat" placeholder="Alamat / Blok / RT RW" />
+        </div>
+        <div>
+          <label for="wa">No WhatsApp</label>
+          <input id="wa" placeholder="Contoh: 62857xxxxxxx" />
+        </div>
+        <div>
+          <label for="paketSelect">Paket Internet</label>
+          <select id="paketSelect"></select>
+        </div>
+      </div>
+      <div class="btn-row">
+        <button onclick="tambahPelanggan()">+ Tambah / Update</button>
+        <button class="secondary" onclick="hapusSemuaPelanggan()">Hapus Semua</button>
+      </div>
+    </section>
+
+    <section class="card" style="margin-top:14px;">
+      <div class="page-header" style="margin-bottom:6px;">
+        <div class="page-title" style="font-size:15px;">Daftar Pelanggan</div>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Nama</th>
+            <th>Alamat</th>
+            <th>WA</th>
+            <th>Paket</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody id="list"></tbody>
+      </table>
+    </section>
+  </div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Login PAY.Net</title>
+    <link rel="stylesheet" href="login.css">
+    <script src="login.js" defer></script>
+</head>
+<body>
+
+<div class="login-card">
+    <h2>LOGIN ADMIN</h2>
+
+    <input id="username" placeholder="Username">
+    <input id="password" placeholder="Password" type="password">
+
+    <button onclick="login()">MASUK</button>
+
+    <div class="ganti-pass" onclick="showChangePass()">Ganti Password</div>
+</div>
+
+<!-- FORM GANTI PASSWORD -->
+<div class="popup" id="popupPass">
+    <div class="popup-card">
+        <h3>Ganti Password</h3>
+
+        <input id="oldPass" type="password" placeholder="Password Lama">
+        <input id="newPass" type="password" placeholder="Password Baru">
+
+        <button onclick="changePass()">Simpan</button>
+        <button class="close" onclick="closePopup()">Batal</button>
+    </div>
+</div>
+
+</body>
+</html>

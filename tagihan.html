@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Input Tagihan - PAY.Net Biling</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <script src="tagihan.js" defer></script>
+</head>
+<body>
+<div class="page">
+  <div class="page-header">
+    <div class="page-title">📄 Input Tagihan</div>
+    <a href="index.html" class="back-link">⬅ Kembali</a>
+  </div>
+
+  <section class="card">
+    <div class="form-grid">
+
+      <div>
+        <label for="pelSelect">Pilih Nama Pelanggan</label>
+        <select id="pelSelect"></select>
+      </div>
+
+      <div>
+        <label for="paket">Voucher-Wifi</label>
+        <input id="paket" placeholder="Ketik manual" />
+      </div>
+
+      <div>
+        <label for="harga">Harga</label>
+        <input id="harga" placeholder="Ketik manual" />
+      </div>
+
+      <div>
+        <label for="periode">Pilih-Tanggal</label>
+        <input id="periode" type="date">
+      </div>
+
+      <div>
+        <label for="status">Status</label>
+        <select id="status">
+          <option value="BELUM">BELUM BAYAR</option>
+          <option value="LUNAS">LUNAS</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="catatan">Catatan</label>
+        <input id="catatan" placeholder="Opsional" />
+      </div>
+
+    </div>
+
+    <div class="btn-row">
+      <button onclick="simpanTagihan()">Simpan Tagihan</button>
+      <button class="secondary" onclick="kirimWATagihan()">Kirim WA</button>
+      <button class="secondary" onclick="cetakStruk()">Cetak Struk 58mm</button>
+    </div>
+  </section>
+
+  <section class="card" style="margin-top:15px;">
+    <div class="page-title">Tagihan Terakhir</div>
+    <div id="previewTagihan" style="font-size:13px;line-height:18px;"></div>
+  </section>
+</div>
+</body>
+</html>

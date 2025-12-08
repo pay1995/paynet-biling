@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Total Pendapatan - PAY.Net Biling</title>
+<link rel="stylesheet" href="style.css">
+<script src="pendapatan.js" defer></script>
+</head>
+
+<body>
+    <div class="page">
+        <div class="page-header">
+            <div class="page-title">💰 Total Pendapatan</div>
+            <a href="index.html" class="back-link">← Kembali</a>
+        </div>
+
+        <section class="card" style="text-align:center; padding: 25px;">
+
+            <h2 style="color: #00eaff;">Pendapatan Per Orang</h2>
+
+            <div id="listPendapatan" 
+                style="margin-top:15px; font-size:18px; color:white; min-height:50px;">
+                <!-- otomatis dari JS -->
+            </div>
+
+            <hr style="border-color:#0ff4; margin:20px auto; width:80%;">
+
+            <h3 id="totalSemuaText" style="color:#00ffcc; margin-top:10px;"></h3>
+
+            <button onclick="hapusSemuaPendapatan()" 
+                class="btn-danger" 
+                style="margin-top:20px; padding:10px 20px;">
+                Hapus Semua Pendapatan
+            </button>
+
+            <br><br>
+
+            <!-- 🔥 TOMBOL KEMBALI YANG KAMU MINTA -->
+           
+       
+        </section>
+    </div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Backup / Restore - PAY.Net Biling</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="backup.js" defer></script>
+</head>
+<body>
+  <div class="page">
+    <div class="page-header">
+      <div class="page-title">📁 Backup & Restore</div>
+      <a href="index.html" class="back-link">⬅ Kembali</a>
+    </div>
+    <section class="card">
+      <p style="font-size:12px;margin-bottom:10px;">
+        Backup akan menyimpan <b>data pelanggan</b> dan <b>history tagihan</b> ke file JSON.
+      </p>
+      <div class="btn-row">
+        <button onclick="backupData()">⬇ Download Backup</button>
+        <input type="file" id="fileInput" accept=".json" />
+        <button class="secondary" onclick="restoreData()">⬆ Restore dari File</button>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
