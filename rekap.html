@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Rekapan Voucher Penjual</title>
+  <link rel="stylesheet" href="rekap.css">
+</head>
+
+<body>
+
+<div class="container">
+
+  <h1 class="title">📊 Rekapan Voucher Penjual</h1>
+
+  <section class="form-box">
+    <div class="row">
+      <div>
+        <label>Tanggal</label>
+        <input type="date" id="tgl">
+      </div>
+
+      <div>
+        <label>Nama Penjual</label>
+        <input type="text" id="penjual" placeholder="Misal: K3 / Heni">
+      </div>
+
+      <div>
+        <label>Nama Voucher</label>
+        <input type="text" id="voucher" placeholder="Misal: 3K/1 hari">
+      </div>
+    </div>
+
+    <div class="row">
+      <div>
+        <label>Jumlah Dititipkan</label>
+        <input type="number" id="titip" value="0">
+      </div>
+
+      <div>
+        <label>Jumlah Terjual</label>
+        <input type="number" id="jual" value="0">
+      </div>
+
+      <div>
+        <label>Harga per Voucher (Rp)</label>
+        <input type="number" id="harga" value="0">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="full">
+        <label>Catatan (Opsional)</label>
+        <input type="text" id="catatan" placeholder="Misal: Titip tambahan, dll">
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button id="simpan" class="btn-green">Simpan Catatan</button>
+      <button id="hapusSemua" class="btn-red">Hapus Semua</button>
+    </div>
+  </section>
+
+
+  <!-- TABEL EXCEL -->
+  <h2 class="sub-title">📘 Rekapan Seperti Excel</h2>
+
+  <table id="tabelExcel">
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>Tanggal</th>
+        <th>Penjual</th>
+        <th>Voucher</th>
+        <th>Dititipkan</th>
+        <th>Terjual</th>
+        <th>Sisa</th>
+        <th>Total Setoran (Rp)</th>
+        <th>Catatan</th>
+        <th>Aksi</th>
+      </tr>
+    </thead>
+    <tbody id="excelBody"></tbody>
+  </table>
+
+
+  <!-- RINGKASAN -->
+  <h2 class="sub-title">📙 Ringkasan Total per Penjual</h2>
+
+  <table id="tabelRingkas">
+    <thead>
+      <tr>
+        <th>No</th>
+        <th>Penjual</th>
+        <th>Total Dititipkan</th>
+        <th>Total Terjual</th>
+        <th>Total Sisa</th>
+        <th>Total Setoran (Rp)</th>
+      </tr>
+    </thead>
+    <tbody id="ringkasBody"></tbody>
+  </table>
+
+</div>
+
+<script src="rekap.js"></script>
+</body>
+</html>
