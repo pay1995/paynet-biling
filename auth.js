@@ -1,53 +1,33 @@
-// ====== AUTH SYSTEM PAY.NET ======
+// Password default
+const ADMIN_USER = "admin";
+const ADMIN_PASS = "1995";
 
-// Default login jika pertama kali
-if (!localStorage.getItem("adminUser")) {
-    localStorage.setItem("adminUser", "admin");
-    localStorage.setItem("adminPass", "1234");
-}
-
-// === LOGIN FUNCTION ===
+// LOGIN
 function login() {
-    const u = document.getElementById("username").value.trim();
-    const p = document.getElementById("password").value.trim();
+    const u = document.getElementById("user").value.trim();
+    const p = document.getElementById("pass").value.trim();
 
-    const user = localStorage.getItem("adminUser");
-    const pass = localStorage.getItem("adminPass");
-
-    if (u === user && p === pass) {
-        localStorage.setItem("loggedIn", "true");
+    if (u === ADMIN_USER && p === ADMIN_PASS) {
+        localStorage.setItem("login", "true");
         window.location.href = "index.html";
     } else {
-        alert("Username atau password salah!");
+        alert("Username / Password salah!");
     }
 }
 
-// === LOGOUT FUNCTION ===
+// LOGOUT
 function logout() {
-    localStorage.removeItem("loggedIn");
+    localStorage.removeItem("login");
     window.location.href = "login.html";
 }
 
-// === PROTECT HALAMAN ===
-function checkLogin() {
-    if (localStorage.getItem("loggedIn") !== "true") {
+// CEK LOGIN DI HALAMAN INDEX
+function cekLogin() {
+    if (!localStorage.getItem("login")) {
         window.location.href = "login.html";
     }
 }
 
-// === CHANGE PASSWORD ===
-function changePassword() {
-    const oldP = document.getElementById("oldPass").value;
-    const newP = document.getElementById("newPass").value;
-
-    const savedPass = localStorage.getItem("adminPass");
-
-    if (oldP !== savedPass) {
-        alert("Password lama salah!");
-        return;
-    }
-
-    localStorage.setItem("adminPass", newP);
-    alert("Password berhasil diganti!");
-    window.location.href = "login.html";
-}
+window.logout = logout;
+window.login = login;
+window.cekLogin = cekLogin;
