@@ -1,33 +1,77 @@
-// =============== LOGIN SYSTEM ===============
-function login() {
-    const user = document.getElementById("username").value;
-    const pass = document.getElementById("password").value;
+import { simpanData, ambilData } from "./firebase.js";
 
-    if (user === "admin" && pass === "1995") {
-        localStorage.setItem("loggedIn", "yes");
-        window.location.href = "index.html";
-    } else {
-        alert("Username atau Password salah!");
+// ======== LOAD PELANGGAN KE SELECT (menu tagihan) =========
+async function loadPelangganToSelect() {
+    const data = await ambilData("pelanggan");
+    const sel = document.getElementById("pelangganSelect");
+
+    if (!sel) return;
+
+    sel.innerHTML = `<option value="">Pilih Pelanggan</option>`;
+
+    if (data) {
+        Object.keys(data).forEach(id => {
+            sel.innerHTML += `<option value="${id}">${data[id].nama}</option>`;
+        });
     }
 }
 
-// =============== LOGOUT SYSTEM ===============
-function logout() {
-    localStorage.removeItem("loggedIn");
-    window.location.href = "login.html";
+// ======== SIMPAN DATA PELANGGAN =========
+async function tambahPelanggan() {
+    const nama = document.getElementById("nama").value;
+    const alamat = document.getElementById("alamat").value;
+    const wa = document.getElementById("wa").value;
+    const paket = document.getElementById("paketSelect").value;
+
+    if (!nama || !alamat || !wa || !paket) {
+        alert("Mohon isi lengkap!");
+        return;
+    }
+
+    const id = Date.now();
+
+    await simpanData("pelanggan/" + id, {
+        nama, alamat, wa, paket
+    });
+
+    alert("Pelanggan berhasil ditambahkan!");
+    location.reload();
 }
 
-window.addEventListener("DOMContentLoaded", () => {
-    const logoutBtn = document.getElementById("logoutBtn");
-    if (logoutBtn) {
-        logoutBtn.addEventListener("click", logout);
+// ======== TAMPILKAN LIST PELANGGAN DI halaman pelanggan.html ========
+async function renderPelanggan() {
+    const tbody = document.getElementById("list");
+    if (!tbody) return;
+
+    const data = await ambilData("pelanggan");
+
+    tbody.innerHTML = "";
+
+    if (!data) {
+        tbody.innerHTML = "<tr><td colspan='5'>Belum ada data pelanggan</td></tr>";
+        return;
     }
 
-    // Jika belum login → kembalikan ke login.html
-    const currentPage = location.pathname.split("/").pop();
-    if (currentPage !== "login.html") {
-        if (!localStorage.getItem("loggedIn")) {
-            window.location.href = "login.html";
-        }
-    }
+    Object.keys(data).forEach((id, i) => {
+        const p = data[id];
+        tbody.innerHTML += `
+            <tr>
+                <td>${i + 1}</td>
+                <td>${p.nama}</td>
+                <td>${p.alamat}</td>
+                <td>${p.wa}</td>
+                <td>${p.paket}</td>
+            </tr>
+        `;
+    });
+}
+
+window.tambahPelanggan = tambahPelanggan;
+window.renderPelanggan = renderPelanggan;
+window.loadPelangganToSelect = loadPelangganToSelect;
+
+// Jalankan otomatis di semua halaman
+document.addEventListener("DOMContentLoaded", () => {
+    renderPelanggan();
+    loadPelangganToSelect();
 });
