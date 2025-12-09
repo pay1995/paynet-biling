@@ -1,31 +1,21 @@
-// --- Firebase SDK (gunakan versi modul) ---
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
-import { getDatabase, ref, set, get, child } 
-    from "https://www.gstatic.com/firebasejs/10.7.0/firebase-database.js";
-
-// --- Konfigurasi Firebase PROJECT KAKAK ---
+// ---------------------------
+// Firebase CONFIG
+// ---------------------------
 const firebaseConfig = {
-    apiKey: "AIzaSyCLdTI_qgNPKa9JgQ1qNVYGv-flo-WYUN8",
+    apiKey: "AIzaSyCLdTI_qgNPKa9JgQ1qNVYGy-f1o-WYUN8",
     authDomain: "paynet-billing.firebaseapp.com",
     projectId: "paynet-billing",
-    storageBucket: "paynet-billing.appspot.com",
+    storageBucket: "paynet-billing.firebasestorage.app",
     messagingSenderId: "1073884574562",
-    appId: "1:1073884574562:web:a702b421fabfe1679bb23b",
-    databaseURL: "https://paynet-billing-default-rtdb.firebaseio.com/"
+    appId: "1:1073884574562:web:a702b421fabfe1679bb23b"
 };
 
-// --- Inisialisasi Firebase ---
-export const app = initializeApp(firebaseConfig);
-export const db = getDatabase(app);
+// ---------------------------
+// Firebase Init
+// ---------------------------
+import { initializeApp } 
+    from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 
-// --- Fungsi SIMPAN ke Firebase ---
-export async function simpanData(path, data) {
-    await set(ref(db, path), data);
-    return true;
-}
+const app = initializeApp(firebaseConfig);
 
-// --- Fungsi BACA dari Firebase ---
-export async function ambilData(path) {
-    const snapshot = await get(child(ref(db), path));
-    return snapshot.exists() ? snapshot.val() : null;
-}
+export { app };
